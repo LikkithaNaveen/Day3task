@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var req=new XMLHttpRequest()
+        
+        req.open('GET','https://restcountries.com/v3.1/all')
+        //console.log(req)
+        req.send()
+        req.onload=function()
+        {
+            var data=JSON.parse(req.response)
+            //console.log(data)
+            //console.log(data[0].area)
+
+            // how to get all areas in console?
+            //for loop
+
+           for(var i=0;i<data.length;i++){
+                console.log(data[i])
+                //console.log(data[i].region,data[i].area)
+            }
+
+            // for of
+            console.log("----------Country names:--------------")
+            for(var obj of data){
+                console.log("Country name is"+ " "+obj.capital +"and this country region and subregion is"+" "+ obj.region +" "+ obj.subregion +" "+"and this country continents is"+" "+ obj.continents)
+            }
+          }
+    </script>
+</body>
+</html>
